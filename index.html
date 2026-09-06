@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mohamed GNENNA | Embedded Linux & Networking Engineer</title>
+
+    <meta
+        name="description"
+        content="Mohamed GNENNA — Embedded Software Engineer and Lead Embedded Architect with 7 years of experience specializing in embedded Linux, OpenWrt, networking, wireless systems, cellular connectivity, cybersecurity, and high-performance embedded platforms."
+    >
+
+    <style>
+        :root {
+            --bg: #0b0f14;
+            --bg-secondary: #111720;
+            --card: #151c25;
+            --card-hover: #1a232e;
+
+            --text: #e8edf3;
+            --text-secondary: #9da9b7;
+            --text-muted: #687585;
+
+            --accent: #4da3ff;
+            --accent-light: #79bbff;
+            --border: #26313d;
+
+            --max-width: 1100px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Helvetica,
+                Arial,
+                sans-serif;
+
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(100% - 40px, var(--max-width));
+            margin: 0 auto;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+
+            background: rgba(11, 15, 20, 0.88);
+            backdrop-filter: blur(12px);
+
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-inner {
+            height: 70px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            font-size: 14px;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 70px;
+
+            background:
+                radial-gradient(
+                    circle at 75% 35%,
+                    rgba(77, 163, 255, 0.09),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 20% 70%,
+                    rgba(77, 163, 255, 0.04),
+                    transparent 25%
+                );
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+
+            color: var(--accent-light);
+            font-size: 14px;
+            font-weight: 600;
+
+            margin-bottom: 20px;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+
+            border-radius: 50%;
+            background: #42d392;
+
+            box-shadow: 0 0 12px rgba(66, 211, 146, 0.5);
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 7vw, 78px);
+            line-height: 1.05;
+            letter-spacing: -3px;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero-description {
+            max-width: 760px;
+
+            color: var(--text-secondary);
+            font-size: clamp(17px, 2vw, 20px);
+
+            margin-bottom: 32px;
+        }
+
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-bottom: 36px;
+        }
+
+        .tag {
+            padding: 7px 12px;
+
+            border: 1px solid var(--border);
+            border-radius: 6px;
+
+            background: rgba(255, 255, 255, 0.02);
+
+            color: var(--text-secondary);
+            font-family: monospace;
+            font-size: 13px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 11px 18px;
+
+            border-radius: 6px;
+            border: 1px solid var(--border);
+
+            font-size: 14px;
+            font-weight: 600;
+
+            transition:
+                transform 0.2s ease,
+                background 0.2s ease,
+                border-color 0.2s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            border-color: #3b4b5c;
+        }
+
+        .button-primary {
+            background: var(--accent);
+            color: #07111d;
+            border-color: var(--accent);
+        }
+
+        .button-primary:hover {
+            background: var(--accent-light);
+        }
+
+        section {
+            padding: 110px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .section-header {
+            margin-bottom: 55px;
+        }
+
+        .section-number {
+            color: var(--accent);
+            font-family: monospace;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-size: 34px;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+        }
+
+        .section-description {
+            color: var(--text-secondary);
+            max-width: 700px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 70px;
+        }
+
+        .about-text p {
+            color: var(--text-secondary);
+            margin-bottom: 18px;
+        }
+
+        .highlight {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .about-facts {
+            border-left: 1px solid var(--border);
+            padding-left: 30px;
+        }
+
+        .fact {
+            margin-bottom: 25px;
+        }
+
+        .fact-label {
+            color: var(--text-muted);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 3px;
+        }
+
+        .fact-value {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .timeline {
+            position: relative;
+        }
+
+        .timeline::before {
+            content: "";
+
+            position: absolute;
+            left: 8px;
+            top: 8px;
+            bottom: 0;
+
+            width: 1px;
+
+            background: var(--border);
+        }
+
+        .experience {
+            position: relative;
+
+            padding-left: 42px;
+            margin-bottom: 65px;
+        }
+
+        .experience:last-child {
+            margin-bottom: 0;
+        }
+
+        .experience::before {
+            content: "";
+
+            position: absolute;
+            left: 4px;
+            top: 8px;
+
+            width: 9px;
+            height: 9px;
+
+            border-radius: 50%;
+
+            background: var(--accent);
+            box-shadow: 0 0 0 4px var(--bg);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+
+            margin-bottom: 6px;
+        }
+
+        .experience-title {
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .experience-date {
+            color: var(--text-muted);
+            font-family: monospace;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        .company {
+            color: var(--accent-light);
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+
+        .experience-description {
+            color: var(--text-secondary);
+            margin-bottom: 18px;
+        }
+
+        .experience-list {
+            list-style: none;
+        }
+
+        .experience-list li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 9px;
+
+            color: var(--text-secondary);
+        }
+
+        .experience-list li::before {
+            content: "→";
+
+            position: absolute;
+            left: 0;
+
+            color: var(--accent);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .skill-card {
+            padding: 24px;
+
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+
+            transition:
+                transform 0.2s ease,
+                background 0.2s ease,
+                border-color 0.2s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-3px);
+            background: var(--card-hover);
+            border-color: #344454;
+        }
+
+        .skill-card h3 {
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+
+        .skill-card p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .featured-project {
+            padding: 35px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(77, 163, 255, 0.08),
+                    rgba(255, 255, 255, 0.015)
+                );
+
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+
+        .project-label {
+            color: var(--accent);
+            font-family: monospace;
+            font-size: 12px;
+            margin-bottom: 12px;
+        }
+
+        .project-title {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            max-width: 850px;
+            margin-bottom: 25px;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .project-detail {
+            padding: 18px;
+
+            background: rgba(0, 0, 0, 0.18);
+
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 6px;
+        }
+
+        .project-detail strong {
+            display: block;
+
+            color: var(--text);
+            font-size: 14px;
+
+            margin-bottom: 5px;
+        }
+
+        .project-detail span {
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        .education-card {
+            padding: 28px;
+
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+
+            margin-bottom: 15px;
+        }
+
+        .education-degree {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .education-school {
+            color: var(--accent-light);
+            margin: 4px 0;
+        }
+
+        .education-details {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .achievement {
+            margin-top: 18px;
+
+            display: inline-block;
+
+            padding: 7px 12px;
+
+            border: 1px solid rgba(77, 163, 255, 0.3);
+            border-radius: 5px;
+
+            background: rgba(77, 163, 255, 0.06);
+
+            color: var(--accent-light);
+
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .contact {
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: clamp(32px, 5vw, 50px);
+            letter-spacing: -1.5px;
+            margin-bottom: 15px;
+        }
+
+        .contact p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+
+            color: var(--text-secondary);
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        footer {
+            padding: 30px 0;
+
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+
+            color: var(--text-muted);
+            font-size: 13px;
+
+            text-align: center;
+        }
+
+        @media (max-width: 800px) {
+            .nav-links {
+                display: none;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .about-facts {
+                border-left: none;
+                border-top: 1px solid var(--border);
+                padding-left: 0;
+                padding-top: 30px;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .experience-header {
+                flex-direction: column;
+                gap: 3px;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .container {
+                width: min(100% - 28px, var(--max-width));
+            }
+
+            section {
+                padding: 80px 0;
+            }
+
+            .hero h1 {
+                letter-spacing: -2px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-project {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <div class="container nav-inner">
+
+        <a href="#top" class="logo">
+            Mohamed<span>GNENNA</span>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+    </div>
+</nav>
+
+<main id="top">
+
+    <section class="hero">
+        <div class="container">
+
+            <div class="hero-content">
+
+                <div class="eyebrow">
+                    Lead Embedded Architect
+                </div>
+
+                <h1>
+                    Embedded software<br>
+                    <span>from hardware to systems.</span>
+                </h1>
+
+                <p class="hero-description">
+                    Embedded Software Engineer and Lead Embedded Architect
+                    with 7 years of experience building embedded systems
+                    across embedded Linux, OpenWrt, networking, wireless
+                    systems, cellular connectivity, and hardware/software
+                    integration.
+                </p>
+
+                <div class="hero-tags">
+                    <span class="tag">Embedded Linux</span>
+                    <span class="tag">OpenWrt</span>
+                    <span class="tag">C / C++</span>
+                    <span class="tag">Networking</span>
+                    <span class="tag">Wi-Fi</span>
+                    <span class="tag">Cellular</span>
+                    <span class="tag">VPN</span>
+                    <span class="tag">Linux Drivers</span>
+                </div>
+
+                <div class="buttons">
+                    <a href="#experience" class="button button-primary">
+                        View experience
+                    </a>
+
+                    <a href="#contact" class="button">
+                        Get in touch
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section id="about">
+
+        <div class="container">
+
+            <div class="section-header">
+                <div class="section-number">01 / ABOUT</div>
+
+                <h2 class="section-title">
+                    Engineering across the stack
+                </h2>
+
+                <p class="section-description">
+                    A systems-oriented embedded engineer with 7 years
+                    of experience spanning firmware, embedded Linux,
+                    OpenWrt, networking, wireless communication,
+                    cellular connectivity, cybersecurity, and
+                    hardware/software integration.
+                </p>
+            </div>
+
+            <div class="about-grid">
+
+                <div class="about-text">
+
+                    <p>
+                        I am an embedded software engineer with
+                        <span class="highlight">
+                            7 years of experience
+                        </span>
+                        developing complex embedded systems from
+                        low-level firmware and device drivers to
+                        <span class="highlight">
+                            embedded Linux, OpenWrt, networking, and
+                            product-level services.
+                        </span>
+                    </p>
+
+                    <p>
+                        My experience includes
+                        <span class="highlight">
+                            OpenWrt build systems, Linux devices and
+                            drivers, device trees, Ethernet, Wi-Fi,
+                            cellular connectivity, VPN technologies,
+                            and network management.
+                        </span>
+                    </p>
+
+                    <p>
+                        I have worked on systems where software and
+                        hardware must operate together under demanding
+                        throughput, latency, connectivity, and
+                        reliability requirements.
+                    </p>
+
+                    <p>
+                        My work has also involved technical leadership,
+                        architecture decisions, mentoring engineers,
+                        debugging complex system-level issues, and
+                        coordinating development across software and
+                        hardware teams.
+                    </p>
+
+                </div>
+
+                <div class="about-facts">
+
+                    <div class="fact">
+                        <div class="fact-label">Experience</div>
+                        <div class="fact-value">
+                            7 Years
+                        </div>
+                    </div>
+
+                    <div class="fact">
+                        <div class="fact-label">Focus</div>
+                        <div class="fact-value">
+                            Embedded Linux & Networking
+                        </div>
+                    </div>
+
+                    <div class="fact">
+                        <div class="fact-label">Platforms</div>
+                        <div class="fact-value">
+                            OpenWrt · Linux · RTOS
+                        </div>
+                    </div>
+
+                    <div class="fact">
+                        <div class="fact-label">Connectivity</div>
+                        <div class="fact-value">
+                            Ethernet · Wi-Fi · Cellular · VPN
+                        </div>
+                    </div>
+
+                    <div class="fact">
+                        <div class="fact-label">Current Role</div>
+                        <div class="fact-value">
+                            Lead Embedded Architect
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="experience">
+
+        <div class="container">
+
+            <div class="section-header">
+
+                <div class="section-number">02 / EXPERIENCE</div>
+
+                <h2 class="section-title">
+                    Professional experience
+                </h2>
+
+                <p class="section-description">
+                    Experience developing embedded platforms across
+                    firmware, Linux, OpenWrt, wireless systems,
+                    cellular connectivity, and high-performance networking.
+                </p>
+
+            </div>
+
+            <div class="timeline">
+
+                <article class="experience">
+
+                    <div class="experience-header">
+
+                        <h3 class="experience-title">
+                            Lead Embedded Architect
+                        </h3>
+
+                        <div class="experience-date">
+                            Present
+                        </div>
+
+                    </div>
+
+                    <div class="company">
+                        Hexa5
+                    </div>
+
+                    <p class="experience-description">
+                        Lead architect and technical owner of a
+                        production-grade inline Ethernet encryption
+                        platform designed for high throughput,
+                        multi-peer operation, and extremely low latency.
+                    </p>
+
+                    <ul class="experience-list">
+
+                        <li>
+                            Selected the target SoC and defined the
+                            embedded software architecture.
+                        </li>
+
+                        <li>
+                            Developed the platform using Zephyr RTOS.
+                        </li>
+
+                        <li>
+                            Designed and implemented the high-throughput
+                            Ethernet data plane.
+                        </li>
+
+                        <li>
+                            Developed a polling-based Ethernet processing
+                            architecture to minimize interrupt overhead
+                            and meet demanding throughput and latency
+                            requirements.
+                        </li>
+
+                        <li>
+                            Coordinated software architecture and data
+                            movement with the FPGA team responsible for
+                            AES-GCM-256 hardware acceleration and DMA.
+                        </li>
+
+                        <li>
+                            Designed and implemented the control plane,
+                            including handshakes, state machines,
+                            encryption control, and key-management
+                            operations.
+                        </li>
+
+                        <li>
+                            Integrated MQTT-based cloud management.
+                        </li>
+
+                        <li>
+                            Developed supporting product services
+                            including alarms, shell/CLI functionality,
+                            and logging.
+                        </li>
+
+                    </ul>
+
+                </article>
+
+                <article class="experience">
+
+                    <div class="experience-header">
+
+                        <h3 class="experience-title">
+                            Embedded Software Engineer / Technical Lead
+                        </h3>
+
+                        <div class="experience-date">
+                            Earlier
+                        </div>
+
+                    </div>
+
+                    <div class="company">
+                        Luceor
+                    </div>
+
+                    <p class="experience-description">
+                        Worked extensively on embedded Linux and OpenWrt
+                        networking platforms, wireless systems, cellular
+                        connectivity, and network-management software.
+                    </p>
+
+                    <ul class="experience-list">
+
+                        <li>
+                            Built and customized OpenWrt images and
+                            extended the OpenWrt build system with
+                            additional hardware targets.
+                        </li>
+
+                        <li>
+                            Worked across Linux devices, device trees,
+                            drivers, and networking subsystems.
+                        </li>
+
+                        <li>
+                            Integrated wireless technologies and drivers,
+                            including Newracom IEEE 802.11ah technology.
+                        </li>
+
+                        <li>
+                            Worked with Qualcomm IPQ6018 platforms and
+                            implemented NSS acceleration for Wi-Fi,
+                            involving low-level device-tree and driver
+                            integration.
+                        </li>
+
+                        <li>
+                            Integrated and managed Sierra Wireless 4G
+                            modules using the uqmi service, including
+                            cellular connectivity and modem diagnostics.
+                        </li>
+
+                        <li>
+                            Worked with OpenVPN, WireGuard, ZeroTier,
+                            fastd, and other networking technologies.
+                        </li>
+
+                        <li>
+                            Worked with SNMPD and network-management
+                            functionality.
+                        </li>
+
+                        <li>
+                            Debugged complex networking issues including
+                            VLAN-related problems.
+                        </li>
+
+                    </ul>
+
+                    <div style="margin-top: 35px;">
+
+                        <h3 style="font-size: 20px; margin-bottom: 10px;">
+                            MeshTool NMS — MQTT Integration
+                        </h3>
+
+                        <p class="experience-description">
+                            Led a small team working on the transition
+                            from traditional SNMP-based device management
+                            toward MQTT-based cloud management.
+                        </p>
+
+                        <ul class="experience-list">
+
+                            <li>
+                                Designed and developed the MQTT client on
+                                the NMS side using Qt.
+                            </li>
+
+                            <li>
+                                Integrated the Eclipse Paho MQTT library
+                                into the NMS.
+                            </li>
+
+                            <li>
+                                Supervised the OpenWrt-side MQTT
+                                implementation using Mosquitto.
+                            </li>
+
+                            <li>
+                                Coordinated the NMS and device-side
+                                management architecture.
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </article>
+
+                <article class="experience">
+
+                    <div class="experience-header">
+
+                        <h3 class="experience-title">
+                            Embedded Software Engineer
+                        </h3>
+
+                        <div class="experience-date">
+                            Earlier
+                        </div>
+
+                    </div>
+
+                    <div class="company">
+                        CodinTek
+                    </div>
+
+                    <p class="experience-description">
+                        Developed firmware for an embedded wireless
+                        communication platform combining FreeRTOS,
+                        lwIP, custom MAC/PHY layers, and RF communication.
+                    </p>
+
+                    <ul class="experience-list">
+
+                        <li>
+                            Developed embedded software using C/C++,
+                            FreeRTOS, and lwIP.
+                        </li>
+
+                        <li>
+                            Worked on UART and SPI interfaces.
+                        </li>
+
+                        <li>
+                            Integrated FatFs and implemented an FTP server.
+                        </li>
+
+                        <li>
+                            Integrated wolfSSL and ported wolfSSH to
+                            provide secure remote access.
+                        </li>
+
+                        <li>
+                            Worked on Ethernet drivers and packet
+                            processing.
+                        </li>
+
+                        <li>
+                            Developed and debugged packet fragmentation
+                            and reassembly across the wireless link.
+                        </li>
+
+                        <li>
+                            Worked with custom MAC and PHY layers and
+                            OFDM-based wireless communication.
+                        </li>
+
+                        <li>
+                            Worked on communication between multiple
+                            wireless devices and a central processing
+                            system.
+                        </li>
+
+                    </ul>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="skills">
+
+        <div class="container">
+
+            <div class="section-header">
+
+                <div class="section-number">03 / SKILLS</div>
+
+                <h2 class="section-title">
+                    Technical skills
+                </h2>
+
+                <p class="section-description">
+                    Technologies and areas I've worked with throughout
+                    my embedded software career.
+                </p>
+
+            </div>
+
+            <div class="skills-grid">
+
+                <div class="skill-card">
+                    <h3>Embedded Linux</h3>
+                    <p>
+                        Linux · OpenWrt · Device Tree · Kernel drivers ·
+                        Cross compilation
+                    </p>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Networking</h3>
+                    <p>
+                        Ethernet · TCP/IP · VLAN · Routing · VPN ·
+                        SNMP · MQTT
+                    </p>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Wireless & Cellular</h3>
+                    <p>
+                        Wi-Fi · IEEE 802.11ah · 4G · Cellular modems ·
+                        uqmi · Modem diagnostics
+                    </p>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Languages</h3>
+                    <p>
+                        C · C++ · Python · Shell scripting
+                    </p>
+                </div>
+
+                <div class="skill-card">
+                    <h3>RTOS</h3>
+                    <p>
+                        Zephyr RTOS · FreeRTOS
+                    </p>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Linux Systems</h3>
+                    <p>
+                        Drivers · Device Tree · Build systems ·
+                        Debugging · System integration
+                    </p>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Connectivity</h3>
+                    <p>
+                        WireGuard · OpenVPN · ZeroTier · fastd ·
+                        4G networking
+                    </p>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Interfaces</h3>
+                    <p>
+                        UART · SPI · Ethernet · DMA
+                    </p>
+                </div>
+
+                <div class="skill-card">
+                    <h3>Security</h3>
+                    <p>
+                        AES-GCM · wolfSSL · wolfSSH · Secure networking
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="projects">
+
+        <div class="container">
+
+            <div class="section-header">
+
+                <div class="section-number">04 / FEATURED PROJECT</div>
+
+                <h2 class="section-title">
+                    High-performance Ethernet encryption
+                </h2>
+
+                <p class="section-description">
+                    A production embedded networking system combining
+                    high-throughput packet processing, hardware-accelerated
+                    cryptography, and hardware/software co-design.
+                </p>
+
+            </div>
+
+            <div class="featured-project">
+
+                <div class="project-label">
+                    EMBEDDED SYSTEMS · DATA PLANE · FPGA
+                </div>
+
+                <h3 class="project-title">
+                    Inline Ethernet Encryptor
+                </h3>
+
+                <p class="project-description">
+                    Lead architect for an embedded Ethernet encryption
+                    platform designed for multi-peer operation,
+                    high-throughput full-duplex networking, and
+                    ultra-low-latency packet processing.
+
+                    The system combines an embedded processor, Ethernet
+                    data plane, DMA, and an FPGA-based AES-GCM-256
+                    cryptographic engine.
+                </p>
+
+                <div class="project-grid">
+
+                    <div class="project-detail">
+                        <strong>Throughput</strong>
+                        <span>
+                            Designed for 1 Gb/s full-duplex operation
+                            and up to 2 Gb/s aggregate traffic.
+                        </span>
+                    </div>
+
+                    <div class="project-detail">
+                        <strong>Latency</strong>
+                        <span>
+                            Architecture designed around extremely
+                            low-latency packet processing.
+                        </span>
+                    </div>
+
+                    <div class="project-detail">
+                        <strong>Operating System</strong>
+                        <span>
+                            Zephyr RTOS
+                        </span>
+                    </div>
+
+                    <div class="project-detail">
+                        <strong>Cryptography</strong>
+                        <span>
+                            Hardware-accelerated AES-GCM-256
+                        </span>
+                    </div>
+
+                    <div class="project-detail">
+                        <strong>Data Movement</strong>
+                        <span>
+                            DMA between DDR memory and FPGA crypto engine
+                        </span>
+                    </div>
+
+                    <div class="project-detail">
+                        <strong>Architecture</strong>
+                        <span>
+                            High-performance data plane + state-machine
+                            driven control plane
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="education">
+
+        <div class="container">
+
+            <div class="section-header">
+
+                <div class="section-number">05 / EDUCATION</div>
+
+                <h2 class="section-title">
+                    Education
+                </h2>
+
+                <p class="section-description">
+                    Engineering and cybersecurity education in Tunisia.
+                </p>
+
+            </div>
+
+            <div class="education-card">
+
+                <div class="education-degree">
+                    Master's Degree in Cybersecurity
+                </div>
+
+                <div class="education-school">
+                    SUP'COM — Higher School of Communications of Tunis
+                </div>
+
+                <div class="education-details">
+                    Graduate studies focused on cybersecurity, secure
+                    communications, and computer and network security.
+                </div>
+
+            </div>
+
+            <div class="education-card">
+
+                <div class="education-degree">
+                    Engineering Degree
+                </div>
+
+                <div class="education-school">
+                    Tunisian Polytechnic School
+                </div>
+
+                <div class="education-details">
+                    Three-year engineering program focused on software
+                    and engineering studies.
+                </div>
+
+            </div>
+
+            <div class="education-card">
+
+                <div class="education-degree">
+                    Preparatory Engineering Studies
+                </div>
+
+                <div class="education-school">
+                    Tunisia
+                </div>
+
+                <div class="education-details">
+                    Two-year preparatory program followed by the national
+                    engineering-school entrance examination.
+                </div>
+
+                <div class="achievement">
+                    Ranked 2nd nationally
+                </div>
+
+            </div>
+
+            <div class="education-card">
+
+                <div class="education-degree">
+                    Tunisian Baccalaureate
+                </div>
+
+                <div class="education-school">
+                    Hannibal High School, Tunisia
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="contact">
+
+        <div class="container">
+
+            <div class="contact">
+
+                <h2>
+                    Let's connect.
+                </h2>
+
+                <p>
+                    Interested in embedded Linux, networking,
+                    wireless systems, cybersecurity, or
+                    high-performance firmware?
+                    Feel free to get in touch.
+                </p>
+
+                <div class="contact-links">
+
+                    <a
+                        href="mailto:mohamed.ept@gmail.com"
+                        class="button button-primary"
+                    >
+                        Email
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+
+    <div class="container">
+        © 2026 Mohamed GNENNA. Built with HTML & CSS.
+    </div>
+
+</footer>
+
+</body>
+</html>
